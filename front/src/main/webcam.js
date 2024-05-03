@@ -1,12 +1,14 @@
 
 
 var video = document.getElementById('sourcevid');
-var button = document.getElementById('takepicture');
-var stockpicture = document.getElementById('stockpicture');
+var takePicture = document.getElementById('takepicture');
+var stockPicture = document.getElementById('stockpicture');
+var activeWebcam = document.getElementById('activate-webcam');
 
 function open_webcam() {
     navigator.mediaDevices.getUserMedia({audio: false, video: {width: 350, height: 350}})
         .then(function(mediaStream) {
+            activeWebcam.textContent = 'Desactivate Webcam'
             var video = document.getElementById('sourcevid');
             video.srcObject = mediaStream;
 
@@ -15,6 +17,7 @@ function open_webcam() {
             video.onloadedmetadata  = function(e) {
                 video.play();
             };
+            
         })
         .catch(function(err) { 
             console.log(err.name + ": " + err.message); 
@@ -30,8 +33,8 @@ function photo(){
     canvas.height=vivi.videoHeight
     canvas.width=vivi.videoWidth
     ctx.drawImage(vivi, 0,0, vivi.videoWidth, vivi.videoHeight);
-    stockpicture.appendChild(canvas);
+    stockPicture.appendChild(canvas);
 }
 
-button.addEventListener("click", photo);
-video.addEventListener("click", open_webcam);
+// takePicture.addEventListener("click", photo);
+activeWebcam.addEventListener("click", open_webcam);
