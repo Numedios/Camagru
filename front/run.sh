@@ -5,7 +5,7 @@ docker build -t camagruimage .
 
 sleep 5
 # Lancer le conteneur en mode développement
-docker run -d -p 8080:80 --name camagrucontainer -v ./mnt/nfs/homes/sbelabba/Desktop/camagru/front/src/main:/usr/share/nginx/html camagruimage
+docker run -d -p 8080:80 --name camagrucontainer camagruimage
 
 # Afficher le statut du conteneur
 docker ps

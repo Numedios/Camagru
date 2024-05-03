@@ -1,0 +1,10 @@
+version: "3.6"
+
+services:
+  front:
+    build:
+      context: ./front  # Chemin vers le répertoire contenant le Dockerfile
+      dockerfile: Dockerfile  # Nom du Dockerfile à utiliser
+    container_name: api_front
+    ports:
+      - '5173:80'  # Mapping de ports, port hôte : port conteneur

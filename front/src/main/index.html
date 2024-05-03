@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style/desktop.css"> 
+    <link rel="stylesheet" href="style/tablet.css">
+    <link rel="stylesheet" href="style/phone.css"> 
 </head>
 <body>
     <header><h1>CAMAGRU</h1>
-            <nav><h1>NAVIGATIONs</h1></nav>
+            <nav><h1>NAVIGATION</h1></nav>
     </header>
 
     <main>
-    <section> 
-        <h1>
-            SECTION
-        </h1>
-    </section>
-    <aside>
-        <h1>
-           ASIDE
-        </h1>
-    </aside>
+        <section> 
+            <div class="webcam">
+                <video id="sourcevid">
+                </video>
+                <button id="takepicture">Take <Picture></Picture></button>
+            </div>
+        </section>
+        <aside>
+            <h2 class="center_text" id="stock_h2">Stock Picture X/10</h2>
+            <div id="stockpicture">
+            </div>
+        </aside>
     </main>
+
     <footer> <h1>footer</h1></footer>
+    <script src="webcam.js"></script>
+    <script src="stockpicture.js"></script>
 </body>
 </html>
