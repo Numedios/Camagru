@@ -34,6 +34,8 @@ main {
 section {
     background-color: brown;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 footer {
@@ -42,6 +44,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .webcam{
@@ -51,6 +54,7 @@ footer {
     flex-direction: column;
     height: 75vh;
     min-height: 400px;
+    width: fit-content;
 
 }
 
@@ -94,6 +98,15 @@ aside {
     max-height: 300px;
     max-width: 300px;
     border: 3px black solid;
+}
+
+#picture-buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+
 }
 
 .pictures:hover
