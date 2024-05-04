@@ -38,14 +38,6 @@ section {
     justify-content: center;
 }
 
-footer {
-    background-color: yellowgreen;
-    height: 8em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
 
 .webcam{
     display: flex;
@@ -66,6 +58,15 @@ footer {
     background-color: white;
 }
 
+#picture-buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+
+}
+
 
 aside {
     min-height: 15vh;
@@ -80,16 +81,16 @@ aside {
     text-align: center;
 }
 
+#stock_h2{
+    height: 5%;
+}
+
 #stockpicture
 {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    /*max-width: 100%;*/
-    /* overflow-y: auto; */
-    /* scrollbar-color: black white; */
-    /* scrollbar-width: thin; */
 }
 
 .pictures{
@@ -100,18 +101,20 @@ aside {
     border: 3px black solid;
 }
 
-#picture-buttons{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 15px;
 
-}
 
 .pictures:hover
 {
     filter: grayscale(60%)
+}
+
+footer {
+    background-color: yellowgreen;
+    height: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 }

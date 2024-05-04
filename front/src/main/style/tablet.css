@@ -38,13 +38,7 @@ section {
     justify-content: center;
 }
 
-footer {
-    background-color: yellowgreen;
-    height: 8em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .webcam{
     display: flex;
@@ -88,7 +82,9 @@ aside {
     text-align: center;
 }
 
-
+/* #stock_h2{
+    height: 5%;
+} */
 
 #stockpicture
 {
@@ -114,6 +110,14 @@ aside {
 .pictures:hover
 {
     filter: grayscale(60%)
+}
+
+footer {
+    background-color: yellowgreen;
+    height: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 }
