@@ -6,7 +6,7 @@ const stockPicture = document.getElementById('stockpicture');
 const  activeWebcam = document.getElementById('activate-webcam');
 
 var boolWebcam = false;
-
+var tracks = null;
 
 function open_webcam() {
     if (!boolWebcam)
@@ -16,7 +16,7 @@ function open_webcam() {
                 var video = document.getElementById('sourcevid');
                 video.srcObject = mediaStream;
 
-                var tracks = mediaStream.getTracks();
+                tracks = mediaStream.getTracks();
                 console.log(tracks)
                 video.onloadedmetadata  = function(e) {
                     video.play();
@@ -33,7 +33,15 @@ function open_webcam() {
     }
     else
     {
-        tracks.stop();
+        if (tracks)
+        {
+        tracks.forEach(function(track){
+            track.stop();
+        });
+        }
+        tracks = null;
+        boolWebcam = false;
+        activeWebcam.textContent = 'Activate Webcam';
         console.log("cam desactivate");
     }
 }
