@@ -8,7 +8,23 @@ const  activeWebcam = document.getElementById('activate-webcam');
 var boolWebcam = false;
 var tracks = null;
 
-function open_webcam() {
+
+/**
+ * Temporarily disables a button for a duration
+ *  @param {HTMLButtonElement} button - the button element to be disabled
+ *  @param {number} duration - duration in miliseconds
+*/
+
+function enableButton(button, duration)
+{
+    button.disabled = true;
+    setTimeout(function() {
+        button.disabled = false;
+    }, duration);
+}
+
+function start_webcam() {
+    enableButton(activeWebcam, 1500)
     if (!boolWebcam)
     {
         navigator.mediaDevices.getUserMedia({audio: false, video: {width: 350, height: 350}})
@@ -47,6 +63,7 @@ function open_webcam() {
 }
 
 function photo(){
+    enableButton(takePicture, 500)
     var vivi = document.getElementById('sourcevid');
     var canvas = document.createElement("canvas");
     canvas.classList.add("pictures");
@@ -58,4 +75,4 @@ function photo(){
 }
 
 takePicture.addEventListener("click", photo);
-activeWebcam.addEventListener("click", open_webcam);
+activeWebcam.addEventListener("click", start_webcam);
