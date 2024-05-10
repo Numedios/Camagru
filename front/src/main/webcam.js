@@ -37,6 +37,7 @@ function activate_webcam()
             };
             boolWebcam = true;
             activeWebcam.textContent = 'Desactivate Webcam'
+            takePicture.style.display = "block";
         })
         .catch(function(err) { 
             // chercher les type d'erreur possible
@@ -59,6 +60,8 @@ function close_webcam()
         console.log("cam desactivate");
 }
 
+
+
 function start_webcam() {
     if (!boolWebcam)
     {
@@ -66,6 +69,7 @@ function start_webcam() {
     }
     else
         close_webcam()
+        takePicture.style.display= "none";
 }
 
 var test = document.getElementById('video-box');
@@ -77,23 +81,16 @@ function photo(){
     enableButton(takePicture, 500)
     if (boolWebcam)
     {
-        takePicture.style.display = "none";
+    takePicture.style.display = "none";
     canvas = document.createElement("canvas");
     canvas.classList.add("pictures");
-    // canvas.id = "canvaShow";
     var ctx = canvas.getContext('2d');
     canvas.height=video.videoHeight
     canvas.width=video.videoWidth
     ctx.drawImage(video, 0,0, video.videoWidth, video.videoHeight);
-    //close_webcam();
-    //stockPicture.appendChild(canvas);
-    //canvas.id = 'canvaShow';
-    //close_webcam()
     buttonsPictures.style.display = "flex";
     video.style.display = 'none';
-    //test.removeChild(video);
     test.appendChild(canvas);
-   // test.replaceChild(canvas,video);
     }
 }
 
