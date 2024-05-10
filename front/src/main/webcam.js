@@ -71,6 +71,8 @@ function start_webcam() {
 var test = document.getElementById('video-box');
 var canvas;
 
+var buttonsPictures = document.getElementById("picture-buttons");
+
 function photo(){
     enableButton(takePicture, 500)
     if (boolWebcam)
@@ -87,6 +89,7 @@ function photo(){
     //stockPicture.appendChild(canvas);
     //canvas.id = 'canvaShow';
     //close_webcam()
+    buttonsPictures.style.display = "flex";
     video.style.display = 'none';
     //test.removeChild(video);
     test.appendChild(canvas);

@@ -62,10 +62,11 @@ section {
 #picture-buttons
 {
     width: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-around;
     padding: 15px;
+
 }
 
 aside {

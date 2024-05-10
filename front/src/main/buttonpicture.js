@@ -11,15 +11,19 @@ console.log(deleteButton);
 
 stockButton.addEventListener("click", function()  
 {
-    enableButton(stockPicture, 1500)
+    enableButton(stockButton, 1500)
     console.log(canvas);
     video.style.display = 'block';
     stockPicture.appendChild(canvas);
+    buttonsPictures.style.display = "none";
     takePicture.style.display = "block";
 });
 
 deleteButton.addEventListener("click", function()  
 {
-    enableButton(activeWebcam, 1500)
-    
+    enableButton(deleteButton, 1500);
+    takePicture.style.display = "block";
+    canvas.remove();
+    buttonsPictures.style.display = "none";
+    video.style.display = 'block';
 });
