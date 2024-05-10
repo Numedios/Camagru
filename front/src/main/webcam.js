@@ -4,6 +4,7 @@ const video = document.getElementById('sourcevid');
 const takePicture = document.getElementById('takepicture');
 const stockPicture = document.getElementById('stockpicture');
 const  activeWebcam = document.getElementById('activate-webcam');
+const webcam = document.getElementsByClassName('webcam');
 
 var boolWebcam = false;
 var tracks = null;
@@ -23,33 +24,30 @@ function enableButton(button, duration)
     }, duration);
 }
 
-function start_webcam() {
-    enableButton(activeWebcam, 1500)
-    if (!boolWebcam)
-    {
-        navigator.mediaDevices.getUserMedia({audio: false, video: {width: 350, height: 350}})
-            .then(function(mediaStream) {
-                var video = document.getElementById('sourcevid');
-                video.srcObject = mediaStream;
 
-                tracks = mediaStream.getTracks();
-                console.log(tracks)
-                video.onloadedmetadata  = function(e) {
-                    video.play();
-                };
-                boolWebcam = true;
-                activeWebcam.textContent = 'Desactivate Webcam'
+function activate_webcam()
+{
+    navigator.mediaDevices.getUserMedia({audio: false, video: {width: 350, height: 350}})
+        .then(function(mediaStream) {
+            video.srcObject = mediaStream;
+            tracks = mediaStream.getTracks();
+            console.log(tracks)
+            video.onloadedmetadata  = function(e) {
+                video.play();
+            };
+            boolWebcam = true;
+            activeWebcam.textContent = 'Desactivate Webcam'
+        })
+        .catch(function(err) { 
+            // chercher les type d'erreur possible
+            console.log(err.name + ": " + err.message); 
+            //document.getElementById("message").innerHTML="message: connection refusé" 
+        });    
+}
 
-            })
-            .catch(function(err) { 
-                // chercher les type d'erreur possible
-                console.log(err.name + ": " + err.message); 
-                ////document.getElementById("message").innerHTML="message: connection refusé" 
-            });
-    }
-    else
-    {
-        if (tracks)
+function close_webcam()
+{
+    if (tracks)
         {
         tracks.forEach(function(track){
             track.stop();
@@ -59,20 +57,48 @@ function start_webcam() {
         boolWebcam = false;
         activeWebcam.textContent = 'Activate Webcam';
         console.log("cam desactivate");
-    }
 }
+
+function start_webcam() {
+    if (!boolWebcam)
+    {
+        activate_webcam()
+    }
+    else
+        close_webcam()
+}
+
+var test = document.getElementById('video-box');
+var canvas;
 
 function photo(){
     enableButton(takePicture, 500)
-    var vivi = document.getElementById('sourcevid');
-    var canvas = document.createElement("canvas");
+    if (boolWebcam)
+    {
+        takePicture.style.display = "none";
+    canvas = document.createElement("canvas");
     canvas.classList.add("pictures");
+    // canvas.id = "canvaShow";
     var ctx = canvas.getContext('2d');
-    canvas.height=vivi.videoHeight
-    canvas.width=vivi.videoWidth
-    ctx.drawImage(vivi, 0,0, vivi.videoWidth, vivi.videoHeight);
-    stockPicture.appendChild(canvas);
+    canvas.height=video.videoHeight
+    canvas.width=video.videoWidth
+    ctx.drawImage(video, 0,0, video.videoWidth, video.videoHeight);
+    //close_webcam();
+    //stockPicture.appendChild(canvas);
+    //canvas.id = 'canvaShow';
+    //close_webcam()
+    video.style.display = 'none';
+    //test.removeChild(video);
+    test.appendChild(canvas);
+   // test.replaceChild(canvas,video);
+    }
 }
 
 takePicture.addEventListener("click", photo);
-activeWebcam.addEventListener("click", start_webcam);
+activeWebcam.addEventListener("click", function()  
+{
+    enableButton(activeWebcam, 1500)
+    start_webcam()
+});
+
+

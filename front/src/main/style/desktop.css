@@ -51,6 +51,14 @@ section {
     background-color: white;
 }
 
+#canvaShow
+{
+    height: 350px;
+    width: 350px;
+    background-color: white;
+    /* background-color: white; */
+}
+
 #picture-buttons
 {
     width: 100%;
