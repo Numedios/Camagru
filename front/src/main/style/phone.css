@@ -13,21 +13,10 @@ main {
     flex-direction: column;
 }
 
-
-
-section {
-    background-color: brown;
-
-}
-
-
-
 .webcam{
     height: 75vh;
 
 }
-
-
 
 #sourcevid {
 
@@ -35,16 +24,11 @@ section {
     min-width: 350px;
 }
 
-
-
 aside {
     min-height: 15vh;
     width: 100%;
     padding-bottom: 15px;
 }
-
-
-
 
 #stock_h2{
     height: 5%;
