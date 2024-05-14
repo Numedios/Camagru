@@ -45,10 +45,22 @@ section {
     min-height: 500px;
 }
 
+#video-box {
+    position: relative;
+}
+
 #sourcevid {
     height: 350px;
     width: 350px;
     background-color: white;
+}
+
+#filter {
+    position: absolute;
+    top:  35%;
+    left: 5%;
+    pointer-events: none;
+    display : none; /* test */
 }
 
 #canvaShow
@@ -69,6 +81,11 @@ section {
 }
 
 #takepicture
+{
+    display: none;
+}
+
+#add-filter
 {
     display: none;
 }

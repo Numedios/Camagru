@@ -37,7 +37,6 @@ function activate_webcam()
             };
             boolWebcam = true;
             activeWebcam.textContent = 'Desactivate Webcam'
-            takePicture.style.display = "block";
         })
         .catch(function(err) { 
             // chercher les type d'erreur possible
@@ -60,16 +59,19 @@ function close_webcam()
         console.log("cam desactivate");
 }
 
-
-
 function start_webcam() {
     if (!boolWebcam)
     {
+        takePicture.style.display = "block";
+        filterButton.style.display = "block";
         activate_webcam()
     }
     else
-        close_webcam()
+    {
         takePicture.style.display= "none";
+        filterButton.style.display = "none";
+        close_webcam()
+    }    
 }
 
 var test = document.getElementById('video-box');
@@ -77,24 +79,7 @@ var canvas;
 
 var buttonsPictures = document.getElementById("picture-buttons");
 
-function photo(){
-    enableButton(takePicture, 500)
-    if (boolWebcam)
-    {
-    takePicture.style.display = "none";
-    canvas = document.createElement("canvas");
-    canvas.classList.add("pictures");
-    var ctx = canvas.getContext('2d');
-    canvas.height=video.videoHeight
-    canvas.width=video.videoWidth
-    ctx.drawImage(video, 0,0, video.videoWidth, video.videoHeight);
-    buttonsPictures.style.display = "flex";
-    video.style.display = 'none';
-    test.appendChild(canvas);
-    }
-}
 
-takePicture.addEventListener("click", photo);
 activeWebcam.addEventListener("click", function()  
 {
     enableButton(activeWebcam, 1500)
