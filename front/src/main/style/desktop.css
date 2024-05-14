@@ -29,11 +29,17 @@ main {
 }
 
 section {
-    background-color: #582900;
+    /* background-color: #582900; */
+    background-image: url("../../../img/camera.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
 }
+
 
 .webcam{ /* im here*/
     display: flex;
