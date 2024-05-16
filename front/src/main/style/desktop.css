@@ -62,19 +62,21 @@ section {
     background-color: white;
 }
 
-#filter {
+#filter1 {
     position: absolute;
     top:  35%;
-    left: 5%;
+    /* left : 5 % */
+    left: calc(50% - 156.5px); 
     pointer-events: none;
     display : none; /* test */
 }
-#filterr {
+#filter2 {
     position: absolute;
     top:  -15%;
-    left: 15%;
+    /* left: 15%; */
+    left: calc(50% - 125px); 
     pointer-events: none;
-    /* display : none; test */
+    display : none;
 }
 
 .test{

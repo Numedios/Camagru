@@ -8,11 +8,12 @@ const filterButton = document.getElementById("add-filter");
 
 var filterBool = false;
 
-var filter = document.getElementById("filter");
+var filter = document.getElementById("filter1");
 
 function filterOn()
 {
     filter.style.display = "block";
+    filterr.style.display = "block";
     filterButton.textContent = "Desactivate Filter"
     filterBool = true;
 }
@@ -20,6 +21,7 @@ function filterOn()
 function filterOff()
 {
     filter.style.display = "none";
+    filterr.style.display = "none";
     filterButton.textContent = "Activate Filter"
     filterBool = false;
 }
@@ -36,18 +38,14 @@ function drawFilters(ctx)
         
         if (displayValue === 'block') {
             var leftValue = computedStyle.getPropertyValue('left');
-            var leftPixels = parseFloat(leftValue);
             var topValue = computedStyle.getPropertyValue('top');
-            var topPixels = parseFloat(topValue);
-            var height = element.clientHeight;
-            var width = element.clientWidth;
-            ctx.drawImage(element, leftPixels, topPixels, width, height);
-
+            ctx.drawImage(element, parseFloat(leftValue), parseFloat(topValue), element.clientWidth, element.clientHeight);
+            element.style.display = 'none'
         }
     });
 }
 
-var filterr = document.getElementById("filterr");
+var filterr = document.getElementById("filter2");
 
 function photo(){
     enableButton(takePicture, 500)
@@ -66,7 +64,8 @@ function photo(){
         buttonsPictures.style.display = "flex";
         video.style.display = 'none';
         test.appendChild(canvas);
-        filterOn();
+        filterButton.textContent = "Desactivate Filter"
+        filterBool = true;
         filterButton.style.display = "none";
     }
 }
@@ -113,7 +112,21 @@ const filters = document.querySelectorAll('#filter-slide .filter');
 // Ajoutez un gestionnaire d'événements click à chaque image
 filters.forEach(filter => {
     filter.addEventListener('click', function() {
-        // Affichez l'attribut "src" de l'image sur laquelle vous avez cliqué
-        console.log('Vous avez cliqué sur l\'image avec la source :', this.src);
+        const relatedFilterId = filter.dataset.relatedFilter;
+        const relatedFilter = document.querySelector(relatedFilterId);
+        const computedStyle = window.getComputedStyle(relatedFilter);
+        if (computedStyle.display === 'none') {
+            console.log("---------1--------")
+            console.log(relatedFilter.style.display)
+            relatedFilter.style.display = 'block';
+            console.log(relatedFilter.style.display)
+            console.log("---------2--------")
+        } else {
+            console.log("---------3--------")
+            console.log(relatedFilter.style.display)
+            relatedFilter.style.display = 'none';
+            console.log(relatedFilter.style.display)
+            console.log("---------4--------")
+        }
     });
 });
