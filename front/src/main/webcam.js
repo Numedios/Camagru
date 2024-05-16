@@ -59,6 +59,7 @@ function close_webcam()
         console.log("cam desactivate");
 }
 
+
 function start_webcam() {
     if (!boolWebcam)
     {
