@@ -62,11 +62,13 @@ buttonChangeBackground.addEventListener('click', function(){
     {
         background.classList.remove('changeThemeAngel')
         background.classList.add('changeThemeDemon');
+        buttonChangeBackground.textContent = 'Angel Background';
     }
     else
     {
         background.classList.remove('changeThemeDemon')
         background.classList.add('changeThemeAngel');
+        buttonChangeBackground.textContent= 'Demon Background';
     }
     boolTheme = !boolTheme;
 });
