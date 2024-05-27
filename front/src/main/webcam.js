@@ -64,13 +64,11 @@ function start_webcam() {
     if (!boolWebcam)
     {
         takePicture.style.display = "block";
-        filterButton.style.display = "block";
         activate_webcam()
     }
     else
     {
         takePicture.style.display= "none";
-        filterButton.style.display = "none";
         close_webcam()
     }    
 }

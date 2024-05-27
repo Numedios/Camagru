@@ -68,20 +68,31 @@ section {
     /* left : 5 % */
     left: calc(50% - 156.5px); 
     pointer-events: none;
-    display : none; /* test */
 }
+
 #filter2 {
     position: absolute;
-    top:  -15%;
+    top:  -14%;
     /* left: 15%; */
     left: calc(50% - 125px); 
     pointer-events: none;
-    display : none;
+
 }
+
+#filter3 {
+    position: absolute;
+    top:  5%;
+    left: 65%;
+    height: 150px;
+    pointer-events: none;
+
+}
+
 
 .test{
     height: 250px;
     width: fit-content;
+    display: none;
 }
 
 #canvaShow

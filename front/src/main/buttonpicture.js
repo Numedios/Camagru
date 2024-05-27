@@ -3,28 +3,10 @@
 const customButton = document.getElementById("custom-button");
 const deleteButton = document.getElementById("delete-button");
 const stockButton = document.getElementById("stock-button");
-const filterButton = document.getElementById("add-filter");
 
 
-var filterBool = false;
 
 var filter = document.getElementById("filter1");
-
-function filterOn()
-{
-    filter.style.display = "block";
-    filterr.style.display = "block";
-    filterButton.textContent = "Desactivate Filter"
-    filterBool = true;
-}
-
-function filterOff()
-{
-    filter.style.display = "none";
-    filterr.style.display = "none";
-    filterButton.textContent = "Activate Filter"
-    filterBool = false;
-}
 
 
 
@@ -64,9 +46,7 @@ function photo(){
         buttonsPictures.style.display = "flex";
         video.style.display = 'none';
         test.appendChild(canvas);
-        filterButton.textContent = "Desactivate Filter"
         filterBool = true;
-        filterButton.style.display = "none";
     }
 }
 
@@ -75,35 +55,22 @@ takePicture.addEventListener("click", photo);
 stockButton.addEventListener("click", function()  
 {
     enableButton(stockButton, 500)
-    // filter.style.display = "block";;
     video.style.display = 'block';
     stockPicture.appendChild(canvas);
     buttonsPictures.style.display = "none";
     takePicture.style.display = "block";
-    filterOff();
-    filterButton.style.display = "block";
 });
 
 deleteButton.addEventListener("click", function()  
 {
     enableButton(deleteButton, 500);
-    // filter.style.display = "block";
     takePicture.style.display = "block";
     canvas.remove();
     buttonsPictures.style.display = "none";
     video.style.display = 'block';
-    filterOff();
-    filterButton.style.display = "block";
 });
 
-filterButton.addEventListener("click", function() 
-{
-    enableButton(filterButton, 500);
-    if (!filterBool)
-        filterOn();
-    else
-        filterOff();
-});
+
 
 
 // Sélectionnez toutes les images avec la classe "filter" dans le div "filter-slide"
@@ -111,22 +78,15 @@ const filters = document.querySelectorAll('#filter-slide .filter');
 
 // Ajoutez un gestionnaire d'événements click à chaque image
 filters.forEach(filter => {
+    
     filter.addEventListener('click', function() {
         const relatedFilterId = filter.dataset.relatedFilter;
         const relatedFilter = document.querySelector(relatedFilterId);
         const computedStyle = window.getComputedStyle(relatedFilter);
         if (computedStyle.display === 'none') {
-            console.log("---------1--------")
-            console.log(relatedFilter.style.display)
             relatedFilter.style.display = 'block';
-            console.log(relatedFilter.style.display)
-            console.log("---------2--------")
         } else {
-            console.log("---------3--------")
-            console.log(relatedFilter.style.display)
             relatedFilter.style.display = 'none';
-            console.log(relatedFilter.style.display)
-            console.log("---------4--------")
         }
     });
 });
