@@ -52,6 +52,26 @@ function photo(){
 
 takePicture.addEventListener("click", photo);
 
+var buttonChangeBackground = document.getElementById('change-background');
+var background = document.getElementById("background");
+var boolTheme = true; // true = angel false = demon
+
+buttonChangeBackground.addEventListener('click', function(){
+    enableButton(buttonChangeBackground, 5100)
+    if (boolTheme)
+    {
+        background.classList.remove('changeThemeAngel')
+        background.classList.add('changeThemeDemon');
+    }
+    else
+    {
+        background.classList.remove('changeThemeDemon')
+        background.classList.add('changeThemeAngel');
+    }
+    boolTheme = !boolTheme;
+});
+
+
 stockButton.addEventListener("click", function()  
 {
     enableButton(stockButton, 500)
