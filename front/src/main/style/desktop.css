@@ -64,6 +64,11 @@ section {
     }
 }
 
+#change-background, #activate-webcam, #takepicture
+{
+    margin: 10px;
+}
+
 .webcam{ /* im here*/
     display: flex;
     justify-content: center;
@@ -150,10 +155,11 @@ section {
     border: 1px solid white;
     border-radius: 63px 63px 63px 63px / 55px 55px 55px 55px;
     height: 100px;
-    display: flex;
+
     width: 30em;
     background-color: black;
     justify-content: center;
+    display: none;
     
 }
 

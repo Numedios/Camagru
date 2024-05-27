@@ -5,6 +5,7 @@ const takePicture = document.getElementById('takepicture');
 const stockPicture = document.getElementById('stockpicture');
 const  activeWebcam = document.getElementById('activate-webcam');
 const webcam = document.getElementsByClassName('webcam');
+const filterSlide = document.getElementById('filter-slide');
 
 var boolWebcam = false;
 var tracks = null;
@@ -31,7 +32,6 @@ function activate_webcam()
         .then(function(mediaStream) {
             video.srcObject = mediaStream;
             tracks = mediaStream.getTracks();
-            console.log(tracks)
             video.onloadedmetadata  = function(e) {
                 video.play();
             };
@@ -64,11 +64,13 @@ function start_webcam() {
     if (!boolWebcam)
     {
         takePicture.style.display = "block";
+        filterSlide.style.display = "flex";
         activate_webcam()
     }
     else
     {
         takePicture.style.display= "none";
+        filterSlide.style.display = "none";
         close_webcam()
     }    
 }
